@@ -1,0 +1,48 @@
+/* *
+* Sasuke - A Perfect Competitor
+* Sasuke is the brightest student in the class. He likes to play with ranges.
+* Naruto, on other hand, jealous of Sasuke always looks for ways to challenge him with daunting problems. So he comes up with an interesting problem, called “CP Numbers”.
+* He gives Sasuke a number N. Sasuke needs to print all those numbers which are perfect cubes and less than equal to N. Sasuke is confident since he believes that this is a trivial question.
+* But then, Naruto adds more details to the question. Sasuke also needs to print the number of distinct prime divisors of the printed numbers.
+* The range of these numbers is vast. You are his best friend. Help Sasuke prove his intelligence one more time. 
+*
+* Input:-
+* The input will consist of 'T' testcases. T lines follow consisting of an positive integer N. 
+*
+* Output:-
+* The output should contain the numbers which are cubes in separate lines followed by count of their prime divisors. Output -1 if no answer exists . 
+* Contraints: 
+* 1 <= T <= 500 
+* 2 <= N <= 10^5
+*
+* Sample Input
+* 1
+* 100
+*
+* Sample Output
+* 8 1
+* 27 1
+* 64 1
+*/
+#include <stdio.h>
+int main ()
+{
+	int i, j, t;
+	short int arr[1000001] = {0};
+	arr[0] = arr[1] = 1;
+	for (i = 2; i < 1000001; i++) {
+		if (arr[i] == 0) {
+			for (j = 2; j*i < 1000001; j++) {
+				arr[j*i]++;
+			}
+		}
+	}
+	scanf("%d", &t);
+	for ( ; t; t--) {
+		scanf("%d", &i);
+		for (j = 2; j*j*j <= i; j++) {
+            printf("%d %d\n", j*j*j, arr[j*j*j]);
+		}
+	}
+	return 0;
+}

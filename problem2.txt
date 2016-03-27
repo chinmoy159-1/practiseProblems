@@ -1,0 +1,69 @@
+/* *
+* Genius of the Year
+* After Alia Bhatt's blunder in Koffee with Karan which created an online buzz and she was named "Genius of the year", Alia got very upset.
+* So she studied hard and after an year went back to Koffee with Karan to prove herself. Now Karan knew that Alia had studied well, so he asked her a tougher question.
+* He gave her a number (Num) and asked her to find out the sum (S) and number (N) of proper divisors.
+* Note: Proper Divisors refers to all divisors of a number except the number itself.
+* Seeing that she calculated the result pretty quickly, he then asked her to tell the Greatest Common Divisor (GCD) of S and N where sum (S) is the sum,
+* and the number (N) is the number of odd proper divisors of n.
+* Help Alia solve the question and become the princess of bollywood again.
+* For her help, he also gave her the pseudo code for calculating the gcd.
+* gcd (a, b) {
+*	if (b==0)
+*		return a;
+*	else
+* return gcd(b,a%b);
+* }
+*
+* Input:-
+* The first line will contain the number of test cases. In each of the test case will be a positive integer (Num).
+*
+* Output:-
+* Print the Greatest Common Divisor of the Sum and Number of odd proper divisors of the given number. 
+*
+* Contraints:
+* 1 <= T <= 10^2 
+* 1 <= Num<=10^5
+* Sample Input:-
+1
+30
+*Sample Output:-
+4
+*/
+#include <stdio.h>
+
+#include <stdio.h>
+long long int gcd (long long int a, long long int b)
+{
+	long long int r;
+	while (b%a != 0) {
+		r = b%a;
+		b = a;
+		a = r;
+	}
+	return a;
+}
+int main ()
+{
+	int t;
+	long long int i, j, k, s, n;
+	scanf("%d", &t);
+	for ( ; t; t--) {
+		scanf("%lld", &n);
+		for (i = 1, s = 0, j = n, k = 0; i <= j; i++, j /= i) {
+			if (n%i == 0) {
+				if (i&1) {
+					s += i;
+					k++;
+				}
+				if (j&1) {
+					s += j;
+					k++;
+				}
+
+			}
+		}
+		printf("%lld\n", gcd (s, k));
+	}
+	return 0;
+}

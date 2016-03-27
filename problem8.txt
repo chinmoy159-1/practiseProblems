@@ -1,0 +1,58 @@
+/* *
+* The Nine Tailed Fox Released
+* The nine tailed fox is released and is now destroying the village of Konoha. Being the 'Hokage', the village head, its your responsibilty to seal the nine tailed beast.
+* You have choosen your son Naruto to be the next host for the nine tailed beast. But for that you need to use the sealing which requires the following problem to be solved.
+* You are given an array A consisting of N elements. Besides you are give Q queries. Each query is of the form L R (0 - based indexing).
+* For each query, you have to print the Sum of elements in the range [0, L-1] and [R+1, N-1].
+* Note: If the range becomes empty i.e if L = 0 (in this case left range becomes empty) or R = N-1 (in this case right range becomes empty), take the sum of the empty ranges to be 0.
+*
+* Input:-
+* The input will consist of a positive integer N followed by an array A of N integers. This will be followed by Q queries each consisting of a pair integer L and R.
+*
+* Output:-
+* Print the required sum as mentioned above.
+*
+* Constraints:-
+* 1 <= N <= 10^5
+* 1 <= Q <= 10^3
+* 0 <= L <= R < N 
+* 0 <= R-L+1 <= 10
+* 0 <= A[i] <= 100
+*
+* Sample Input:-
+5
+2 4 3 7 5 
+3
+0 1
+1 3
+2 4
+* Sample Output:-
+15
+7
+6
+*/
+#include <stdio.h>
+int main()
+{
+	int i, j, k, res, n;
+	scanf("%d", &n);
+	int arr[n];
+	j = 0;
+	for (i = 0; n; n--) {
+		scanf("%d", &k);
+		j += k;
+		arr[i++] = j;
+	}
+	scanf("%d", &n);
+	for ( ; n; n--) {
+		scanf("%d%d", &j, &k);
+		if (!(res = 0) && j != 0) {
+            res += arr[j-1];
+		}
+		if (k != i) {
+            res += (arr[i-1] - arr[k]);
+		}
+		printf("%d\n", res);
+	}
+	return 0;
+}

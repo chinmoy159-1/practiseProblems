@@ -1,0 +1,35 @@
+/* *
+* Right Angled Triangle
+* Lets have a warmup question for trihacker coding event.... I'm going to keep the problem statement straight forward. In a right angled triangle ABC right angled at B D is the midpoint of AC.
+* Given lengths AB and BC, find the angle DBC. Output should be the smallest integer not less than the angle DBC
+* For Example: If the angle DBC is 45.0000 print 45 and if it is is 45.7832 print 46
+*
+* Input:-
+* First line contains two numbers which are the lengths of AB and BC.
+*
+* Output:-
+* Print the required answer.
+*
+* Constraints: 1 <= AB, BC<=100
+* Hint:- 
+* Some Maths Library functions :-
+* sin(x) = sine value of x , similarly for cos and tan .
+* asin(x ) = inverse sin of x , similarly for cos and tan.
+* ceil(x) = smallest integer function
+* floor(x) = greatest integer function.
+*
+* Sample Input:-
+30 30
+* Sample Output:-
+45
+*/
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+	double ab, bc, ac;
+	scanf("%lf%lf", &ab, &bc);
+	ac = sqrt (ab*ab + bc*bc);
+	
+	return 0;
+}

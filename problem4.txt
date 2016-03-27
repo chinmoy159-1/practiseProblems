@@ -1,0 +1,48 @@
+/* *
+* Naruto - The Beginning
+* Kakashi Sensei, the finest Shinobi in Konoha village, is fond of giving mind-boggling puzzles to Naruto. This time he is ready with an another puzzle to test his capabilities.
+* This can be Naruto's first step to become an elite shinobi. The puzzle is simple to crack, however this can't be said for poor Naruto though, who always got worst grades in the class.
+* But you know he always works very hard and never gives up. Perhaps this is the best thing about him. :P
+* He wants your help to solve this puzzle. He has also promised you to teach 'Rasengan', his special ability, if you help him shine.
+* The puzzle is as follows:-
+* Consider the game of chess having a 8 X 8 board (1-based indexing). There is a bishop located at position (X, Y) in this chessboard. Here X denotes the row number and Y denotes the column number.
+* Now you have to tell whether a given (X', Y') can be reached by this bishop after finite number of moves. (possibly 0)
+* For those unfamiliar with chess, a bishop can move in diagonal direction.
+* i.e. if a bishop is present at position (X, Y) he can move to positions (X-i, Y-i), (X+i, Y-i), (X-i, Y+i), (X+i, Y+i) where i is such that the bishop doesn't steps out of the board.
+*
+* Input:-
+* The input consist of four positive integers X, Y, X', Y'.
+*
+* Output:-
+* Print 'YES' (without quotes) if you can reach position X', Y' after a finite number of moves. 'NO' otherwise.
+*
+* Constraint:
+* 1 <= t <= 100,
+* 1 <= X, Y <= 8,
+* 1 <= X', Y' <= 8, 
+*
+* Sample Input:-
+2
+1 2 4 4
+1 2 4 1
+* Sample Output:-
+NO
+YES
+*/
+#include <stdio.h>
+int main ()
+{
+	int t, i, j, x, y;
+	scanf("%d", &t);
+	for ( ; t; t--) {
+		scanf("%d%d%d%d", &i, &j, &x, &y);
+		if ((x + y)%2 == 0 && (i + j)%2 == 0) {
+			printf("YES\n");
+		} else if ((x + y)%2 == 1 && (i + j)%2 == 1) {
+			printf("YES\n");
+		} else {
+			printf("NO\n");
+		}
+	}
+	return 0;
+}

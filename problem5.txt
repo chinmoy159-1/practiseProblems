@@ -1,0 +1,55 @@
+/* *
+* Naruto loves Sakura Chan
+* Sakura is a very Charming and Sweet girl in Leaf Village and she has the following task for Naruto. 
+* You are given N numbers you need to find the number of occurrence of each distinct number in the list.
+* Print each distinct number sorted in ascending order followed by its count separated by space.Each distinct number and its occurrence must be printed in a new line.
+*
+* Input:-
+* First line of input contains N i.e number of numbers in the list. Followed by N numbers of the list in a single line.
+*
+* Output:-
+* In each line of output print 2 numbers the distinct number followed by its respective count.
+*
+* Constraint:-
+* 1 <= N <= 100000.
+* 0 <= Value of each element in the list <= 100000
+*
+* Sample Input:-
+5
+1 2 3 2 4
+* Sample Output:-
+1 1
+2 2
+3 1
+4 1
+*
+* Explanation
+* Explanation Example 1 : There are 4 distinct numbers 1,2,3,4. Number of occurrences of which are 1,2,1,1 respectively. So we get the above output for the 1st Example
+* Note : The numbers should be output in sorted order means Distinct number which is smaller in value must be printed first and its respective count must follow thereafter separated by space.
+* Thereafter the larger distinct numbers must follow with their count(till there exists a distinct number) .
+*/
+#include <stdio.h>
+#include <stdlib.h>
+int comp (const void *a, const void *b)
+{
+	return (*(int *)a - *(int *)b);
+}
+int main ()
+{
+	int n, i, j;
+	int in[100009] = {0};
+	scanf("%d", &n);
+	int arr[n];
+	for (i = 0; n; n--) {
+		scanf("%d", &j);
+		if (in[j] == 0) {
+			arr[i++] = j;
+		}
+		in[j]++;
+	}
+	qsort (arr, i, sizeof (int), comp);
+	for (j = 0; j < i; j++) {
+		printf("%d %d\n", arr[j], in[arr[j]]);
+	}
+	return 0;
+}

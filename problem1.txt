@@ -1,0 +1,56 @@
+/* *
+* Chunin Exams - A Step to becoming Hokage
+* Naruto is in middle of Chunin Exams. His dream of becoming a Hokage can be one step closer if he passes the exam. However this time problem setter Ibiki, the master of interrogation.
+* He has used his old trick to fail as many students as he can. Naruto doesnt wanna fail but he can't cheat either. Can you help him clear the test ?
+* Ibiki has a beautiful array of size N. He wants Naruto to find the middle element of the array after rotating the element by K positions i.e from left towards right for each query. 
+* Rotate by 1 step means that the element from end of array move to the beginning and all the other elements keep on moving towards right.
+* But there are multiple queries, you have to output the middle element after each query. The array regains its original form (initial state) after each query.
+* So we do not consider the changed array but the original array in each query.
+*
+* Input:-
+* First line of input contains number of numbers of array N. The next line contains N space separated elements of array A. Then there an number Q denoting the number of queries.
+* Next Q lines lines contain a single number K denoting the value by which the elements of an array are shifted. 
+*
+* Output:-
+* For each Query output the middle element when the elements of the array are shifted by K positions. 
+*
+* Constraints:-
+* 1 <= N <= 100
+* 0 <= A[i] <= 10^9
+* 1 <= Q <= 10
+* 1 <= Shift Value (k) < 10
+* Note : The number of elements are always odd.
+*
+* Sample Input:-
+5
+2 4 3 7 5 
+3
+1
+2
+3
+* Sample Output:-
+4
+2
+5
+*/
+#include <stdio.h>
+int main ()
+{
+	int t, i, j, n;
+	scanf("%d", &n);
+	int arr[n];
+	for (i = 0; i < n; i++) {
+		scanf("%d", &arr[i]);
+	}
+	scanf("%d", &t);
+	for ( ; t; t--) {
+		scanf("%d", &j);
+		i = (n/2 - j);
+		if (i < 0) {
+			i += n;
+		}
+		i %= n;
+		printf("%d\n", arr[i]);
+	}
+	return 0;
+}
