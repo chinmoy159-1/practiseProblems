@@ -1,0 +1,26 @@
+/* *
+* Chotu & Chocolate Day
+* On Chocolate day, Chotu wants to give his girlfriend a box of chocolate.
+* Chotu has a N X N square box and N2 chocolates each having a distinct sweetness value between 1 and N2.
+* To make the box look attractive Chotu must fill each row with chocolates arranged in increasing value of sweetness.
+* Chotu also knows that his girlfriend loves the number K so he wants to maximize the total sweetness of the Kth column.
+* Help Chotu arrange the chocolate in the box in a way that each row has choclates with increasing value of sweetness,
+* and the total sweetness of Kth column is maximized. 
+* As there are multiple ways to arrange chocolates, your task is to tell Chotu the maximum possible sweetness he can have for the Kth column. 
+*
+* Input:-
+* First line contains integer T denoting number of testcases. Each testcase has two integers N and K.
+*
+* Output:-
+* For each test case print answer in single line the maximum possible sweetness Chotu can have for the Kth column.
+*
+* Constraints
+* 1 <= T <= 20
+* 1 <= N <= 10^3
+* 1 <= K <= N
+* Sample Input:-
+* 1
+* 4 1
+* Sample Output:-
+* 28
+*/

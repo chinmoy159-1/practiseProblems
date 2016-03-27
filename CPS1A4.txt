@@ -1,0 +1,73 @@
+/* *
+* Chotu & Promise Day
+* "Promises are meant to be broken."
+* Chotu being desperately in love with her crush made N promises to her on Promise Day.
+* Each promise "i" is associated with an effort value Ei.
+* The effort value of all the promises are distinct and each Effort value lies between 1 to N (both inclusive).
+* It was later he realised that he will not be able to fulfil all the N promises he made.
+* After analysing all the N promises he came to a conclusion that he can only fulfil a promise "i" if and only if GCD(Ei, N) = D.
+* Find out how many promises will Chotu be able to fulfil.
+* NOTE:- GCD(x, y) means the highest common factor that divides both x and y.
+*
+* Input:-
+* First line of input contains the number T denoting number of test cases.
+* Each of the next T lines contain 2 space separated integers N and D.
+*
+* Output:-
+* Print T lines. Each containing a single integer denoting number Promises Chotu can make. 
+*
+* Constrains
+* 1 <= T <= 1000
+* 1 <= D <= N <= 10^6
+* Sample Input:-
+* 2
+* 5 1
+* 10 3
+* Sample Output:-
+* 4
+* 0
+*/
+/* *
+* In short, we just need to find the euler - totient of (N / D)
+*/
+#include <stdio.h>
+int main()
+{
+	int i, j, t, n, d;
+	short int arr[1000001] = {0};
+	arr[0] = arr[1] = -1;
+	for (i = 2; i < 1000001; i++) {
+		if (arr[i] == 0) {
+			arr[i] = i-1;
+			for (j = 2; j*i < 1000001; j++) {
+				arr[j*i] = -1;
+			}
+		}
+	}
+	for (scanf("%d", &t); t; t--) {
+		scanf("%d%d", &n, &d);
+		if (n%d != 0) {
+			printf("0\n");
+		} else {
+			n = n/d;
+			if (arr[n] != -1) {
+				printf("%d\n", arr[n]);
+			} else {
+				j = n;
+				for(i = 2; i*i <= n; i++) {
+					if(n%i == 0) {
+						j -= j/i;
+					}
+					while(n%i == 0) {
+						n /= i;
+					}
+				}
+				if(n > 1) {
+					j -= j/n;
+				}
+				printf("%d\n", j);
+			}
+		}
+	}
+	return 0;
+}

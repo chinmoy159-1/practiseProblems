@@ -1,0 +1,82 @@
+/* *
+* Chotu & Rose Day
+* Valentine week has started and Chotu wants to impress his crush.
+* On this rose day Chotu plans to give his crush a bouquet of roses.
+* Chotu visits a rose shop which has N number of roses and each rose has a certain love factor.
+* Now Chotu wants to make a bouquet with maximum number of roses.
+* As Chotu’s crush is very selective, she will only accept the bouquet if it contains roses with distinct love factors.
+* To make the bouquet attractive Chotu wants to arrange roses in the following order.
+* He will first choose rose with the largest love factor followed by the rose with smallest0 love factor,
+* followed by rose with 2nd largest love factor followed by the rose with 2nd smallest love factor and so on.
+* Help Chotu to design the bouquet.
+*
+* Input:-
+* First line contains integer T denoting number of testcases. 
+* Second line contains integer N denoting number of roses. 
+* Next line contains N integers separated by a single space denoting love factor. 
+*
+* Ouptut:-
+* For each test case print answer in single line in the format explained above. 
+*
+* Constraints 
+* 1 <= T <= 10
+* 1 <= N <= 10^5
+* 1 <= Love factor of roses <= 10^6
+* Sample Input:-
+* 2
+* 6
+* 6 2 1 3 2 1
+* 3
+* 1 1 1
+* Sample Output:-
+* 6 1 3 2
+* 1
+*/
+#include<stdio.h>
+#include<stdlib.h>
+int comp(const void *a, const void *b) {
+	return (*(int *)a - *(int *)b);
+}
+short int index[1000001]={0};
+int main() {
+	int t, n, a, i, j, k;
+	scanf("%d", &t);
+	for ( ; t; t--) {
+		scanf("%d", &n);
+		int arr0[n];
+		for (a = 0, k = 0; a < n; a++) {
+			scanf("%d", &j);
+			if (index[j] == 0) {
+				index[j] = 1;
+				arr0[k] = j;
+				k++;
+			}
+		}//only one occurence
+		int arr1[k];
+		for (i = 0; i < k; i++) {
+			arr1[i]=arr0[i];
+			index[arr0[i]] = 0;
+		}//reset index
+		qsort(arr1, k, sizeof(int), comp);
+		if (k == 1) {
+			printf("%d\n", arr1[0]);
+		} else {
+			for (j = 0, i = 0; i < k/2; i++) {
+				arr0[j] = arr1[k-1-i];
+				j++;
+				arr0[j] = arr1[i];
+				j++;
+			}
+			if (k&1) {
+				arr0[j] = arr1[k/2];
+			}
+			for (i = 0; i < k; i++) {
+				printf("%d ", arr0[i]);
+			}
+			printf("\n");
+		}
+	}
+	return 0;
+}
+
+
